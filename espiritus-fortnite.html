@@ -402,13 +402,11 @@ const grid = document.getElementById('grid');
 const empty = document.getElementById('empty');
 const countLive = document.getElementById('count-live');
 
-// estado del checklist: en memoria (se reinicia al recargar la página,
-// no usa almacenamiento del navegador para que funcione en cualquier entorno)
-const state = {}; // { slug: { owned:false, gold:false, gummy:false, galaxy:false, holo:false } }
-SPRITES.forEach(s => {
-  state[s.slug] = {owned:false};
-  s.variants.forEach(v => state[s.slug][v] = false);
-});
+const STORAGE_KEY='fortniteSpritesState';
+const state=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
+SPRITES.forEach(s=>{if(!state[s.slug]) state[s.slug]={owned:false}; s.variants.forEach(v=>{if(state[s.slug][v]===undefined) state[s.slug][v]=false;});});
+function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}
+
 
 const checkSVG = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>`;
 
@@ -441,6 +439,7 @@ function cardHTML(s){
 }
 
 grid.innerHTML = SPRITES.map(cardHTML).join('');
+SPRITES.forEach(s=>{const c=grid.querySelector(`.card[data-slug="${s.slug}"]`);if(state[s.slug].owned)c.classList.add('collected');s.variants.forEach(v=>{if(state[s.slug][v])grid.querySelector(`.v[data-slug="${s.slug}"][data-variant="${v}"]`).classList.add('checked');});});
 
 // --- interacciones de checklist ---
 grid.addEventListener('click', (e) => {
@@ -449,6 +448,7 @@ grid.addEventListener('click', (e) => {
     const {slug, variant} = variantEl.dataset;
     state[slug][variant] = !state[slug][variant];
     variantEl.classList.toggle('checked', state[slug][variant]);
+    saveState();
     updateProgress();
     return;
   }
@@ -458,6 +458,7 @@ grid.addEventListener('click', (e) => {
     state[slug].owned = !state[slug].owned;
     const card = grid.querySelector(`.card[data-slug="${slug}"]`);
     card.classList.toggle('collected', state[slug].owned);
+    saveState();
     updateProgress();
   }
 });
@@ -501,6 +502,7 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   });
   grid.querySelectorAll('.card').forEach(c => c.classList.remove('collected'));
   grid.querySelectorAll('.v').forEach(v => v.classList.remove('checked'));
+  saveState();
   updateProgress();
 });
 
