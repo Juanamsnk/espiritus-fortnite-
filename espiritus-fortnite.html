@@ -21,6 +21,8 @@
     --holo-2:#ff7ce5;
     --holo-3:#ffe27a;
     --new:#ff6b6b;
+    --gem:#63e6ff;
+    --cubic:#bfc5d2;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -124,6 +126,8 @@
   .vp-dot.gummy{background:var(--gummy);}
   .vp-dot.galaxy{background:var(--galaxy);}
   .vp-dot.holo{background:linear-gradient(120deg,var(--holo-1),var(--holo-2),var(--holo-3)); background-size:300% 100%; animation:holoshift 3s linear infinite;}
+.vp-dot.gem{background:var(--gem);}
+.vp-dot.cubic{background:var(--cubic);}
   .reset-btn{
     margin-top:14px;
     font-family:'JetBrains Mono',monospace; font-size:11.5px;
@@ -278,7 +282,11 @@
   .v.checked.v-gold{box-shadow:0 0 10px -2px rgba(244,201,72,.7);}
   .v.checked.v-gummy{box-shadow:0 0 10px -2px rgba(123,224,168,.7);}
   .v.checked.v-galaxy{box-shadow:0 0 10px -2px rgba(163,137,244,.7);}
-  .v.checked.v-holo{animation:holoshift 3s linear infinite; box-shadow:0 0 10px -2px rgba(94,214,255,.7);}
+  .v-gem{color:#00394a;background:linear-gradient(135deg,#bdf8ff,var(--gem));}
+.v-cubic{color:#222;background:linear-gradient(135deg,#f0f0f0,var(--cubic));}
+.v.checked.v-gem{box-shadow:0 0 10px rgba(99,230,255,.7);}
+.v.checked.v-cubic{box-shadow:0 0 10px rgba(191,197,210,.7);}
+.v.checked.v-holo{animation:holoshift 3s linear infinite; box-shadow:0 0 10px -2px rgba(94,214,255,.7);}
   @keyframes holoshift{0%{background-position:0% 0}100%{background-position:300% 0}}
 
   .empty-state{
@@ -334,9 +342,7 @@
       <div class="vp-item"><span class="vp-dot gold"></span><span id="vp-gold">0/23 Dorado</span></div>
       <div class="vp-item"><span class="vp-dot gummy"></span><span id="vp-gummy">0/23 Gomoso</span></div>
       <div class="vp-item"><span class="vp-dot galaxy"></span><span id="vp-galaxy">0/23 Galaxia</span></div>
-      <div class="vp-item"><span class="vp-dot holo"></span><span id="vp-holo">0/14 Holofoil</span></div>
-    </div>
-    <button class="reset-btn" id="reset-btn">↺ Reiniciar checklist</button>
+      <div class="vp-item"><span class="vp-dot holo"></span><span id="vp-holo">0/14 Holofoil</span><div class="vp-item"><span class="vp-dot gem"></span><span id="vp-gem">0/23 Gemma</span></div><div class="vp-item"><span class="vp-dot cubic"></span><span id="vp-cubic">0/23 Cúbico</span></div></div><button class="reset-btn" id="reset-btn">↺ Reiniciar checklist</button>
   </div>
 </header>
 
@@ -364,25 +370,25 @@
 
 <script>
 const SPRITES = [
-  {slug:"tierra", es:"Espíritu de Tierra", en:"Earth Sprite", ability:"Tenés chance de encontrar objetos raros extra al abrir cofres.", location:"Cofres comunes y zonas con muchos árboles", isNew:false, variants:["gold","gummy","galaxy","holo"]},
-  {slug:"fuego", es:"Espíritu de Fuego", en:"Fire Sprite", ability:"Genera una explosión de fuego cuando le hacés suficiente daño a un enemigo.", location:"Cofres comunes y zonas urbanas", isNew:false, variants:["gold","gummy","galaxy","holo"]},
-  {slug:"agua", es:"Espíritu de Agua", en:"Water Sprite", ability:"Te recarga el escudo mientras estás en el agua.", location:"Cofres comunes y cerca del agua", isNew:false, variants:["gold","gummy","galaxy","holo"]},
+  {slug:"tierra", es:"Espíritu de Tierra", en:"Earth Sprite", ability:"Tenés chance de encontrar objetos raros extra al abrir cofres.", location:"Cofres comunes y zonas con muchos árboles", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
+  {slug:"fuego", es:"Espíritu de Fuego", en:"Fire Sprite", ability:"Genera una explosión de fuego cuando le hacés suficiente daño a un enemigo.", location:"Cofres comunes y zonas urbanas", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
+  {slug:"agua", es:"Espíritu de Agua", en:"Water Sprite", ability:"Te recarga el escudo mientras estás en el agua.", location:"Cofres comunes y cerca del agua", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
   {slug:"pato", es:"Espíritu Pato", en:"Duck Sprite", ability:"Recargás escudo al usar un gesto o tocar un instrumento (jam).", location:"Cofres comunes o Cluster Coast", isNew:false, variants:["gold","gummy","galaxy"]},
-  {slug:"fantasma", es:"Espíritu Fantasma", en:"Ghost Sprite", ability:"Te da invisibilidad (cloak) después de recargar.", location:"Deambulando por el mapa de noche", isNew:false, variants:["gold","gummy","galaxy","holo"]},
+  {slug:"fantasma", es:"Espíritu Fantasma", en:"Ghost Sprite", ability:"Te da invisibilidad (cloak) después de recargar.", location:"Deambulando por el mapa de noche", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
   {slug:"demonio", es:"Espíritu Demonio", en:"Demon Sprite", ability:"Roba vida y escudo cada vez que eliminás a un rival.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy"]},
-  {slug:"rey", es:"Espíritu Rey", en:"King Sprite", ability:"Aumenta el daño de tu pico.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo"]},
-  {slug:"onirico", es:"Espíritu Onírico", en:"Dream Sprite", ability:"Te da un objeto al azar en cada nivel y botín legendario al nivel máximo.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo"]},
-  {slug:"punk", es:"Espíritu Punk", en:"Punk Sprite", ability:"Tiene chance de darte munición infinita al nivel 5.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo"]},
+  {slug:"rey", es:"Espíritu Rey", en:"King Sprite", ability:"Aumenta el daño de tu pico.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
+  {slug:"onirico", es:"Espíritu Onírico", en:"Dream Sprite", ability:"Te da un objeto al azar en cada nivel y botín legendario al nivel máximo.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
+  {slug:"punk", es:"Espíritu Punk", en:"Punk Sprite", ability:"Tiene chance de darte munición infinita al nivel 5.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
   {slug:"punto-cero", es:"Espíritu del Punto Cero", en:"Zero Point Sprite", ability:"Crea una Burbuja de Escudo Jr. cuando usás un objeto de curación en vos mismo.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy"]},
   {slug:"mani-quemado", es:"Espíritu Maní Quemado", en:"Burnt Peanut Sprite", ability:"Encontrás más botín al eliminar jugadores.", location:"Cofres Relic", isNew:false, variants:["gold","gummy","galaxy"]},
-  {slug:"delantero", es:"Espíritu Delantero", en:"Striker Sprite", ability:"Ganás Overdrive (sobremarcha) al trepar o saltar obstáculos.", location:"Metiendo un gol en la cancha de fútbol", isNew:false, variants:["gold","gummy","galaxy","holo"]},
-  {slug:"pez", es:"Espíritu Pez", en:"Fishy Sprite", ability:"Aumenta tu velocidad de nado y te da un envión de velocidad al recibir daño.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo"]},
+  {slug:"delantero", es:"Espíritu Delantero", en:"Striker Sprite", ability:"Ganás Overdrive (sobremarcha) al trepar o saltar obstáculos.", location:"Metiendo un gol en la cancha de fútbol", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
+  {slug:"pez", es:"Espíritu Pez", en:"Fishy Sprite", ability:"Aumenta tu velocidad de nado y te da un envión de velocidad al recibir daño.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
   {slug:"aura", es:"Espíritu Aura", en:"Aura Sprite", ability:"Ganás una carga de Roca Eléctrica (Shock Rock) al hacerle daño a los enemigos.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy"]},
-  {slug:"jefe", es:"Espíritu Jefe", en:"Boss Sprite", ability:"Aumenta tu HP y escudo máximos.", location:"Chance de aparecer al derrotar a un jefe", isNew:false, variants:["gold","gummy","galaxy","holo"]},
-  {slug:"parca", es:"Espíritu Parca", en:"Grim Reaper Sprite", ability:"Marca por un rato a los jugadores que te atacan.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo"]},
-  {slug:"aire", es:"Espíritu de Aire", en:"Air Sprite", ability:"Aumenta la velocidad al esprintar y la altura de salto, y anula el daño de caída.", location:"Sin ubicación confirmada (reportado en zonas altas y montañosas)", isNew:true, variants:["gold","gummy","galaxy","holo"]},
-  {slug:"siete", es:"Espíritu de Los Siete", en:"Seven Sprite", ability:"Tu escuadrón ve las huellas que dejan los enemigos al moverse.", location:"Cofres de espíritu", isNew:true, variants:["gold","gummy","galaxy","holo"]},
-  {slug:"batman", es:"Espíritu de Batman", en:"Batman Sprite", ability:"Te deja impulsarte al aire y desplegar la Bat Capa.", location:"Cofres de espíritu", isNew:true, variants:["gold","gummy","galaxy","holo"]},
+  {slug:"jefe", es:"Espíritu Jefe", en:"Boss Sprite", ability:"Aumenta tu HP y escudo máximos.", location:"Chance de aparecer al derrotar a un jefe", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
+  {slug:"parca", es:"Espíritu Parca", en:"Grim Reaper Sprite", ability:"Marca por un rato a los jugadores que te atacan.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
+  {slug:"aire", es:"Espíritu de Aire", en:"Air Sprite", ability:"Aumenta la velocidad al esprintar y la altura de salto, y anula el daño de caída.", location:"Sin ubicación confirmada (reportado en zonas altas y montañosas)", isNew:true, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
+  {slug:"siete", es:"Espíritu de Los Siete", en:"Seven Sprite", ability:"Tu escuadrón ve las huellas que dejan los enemigos al moverse.", location:"Cofres de espíritu", isNew:true, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
+  {slug:"batman", es:"Espíritu de Batman", en:"Batman Sprite", ability:"Te deja impulsarte al aire y desplegar la Bat Capa.", location:"Cofres de espíritu", isNew:true, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
   {slug:"vini-jr", es:"Espíritu de Vini Jr.", en:"Vini Jr. Sprite", ability:"El deslizamiento tras esprintar rompe estructuras; barrer a un rival sube tu cadencia de fuego y velocidad de recarga.", location:"Cofres Relic (no aparece en cofres de espíritu)", isNew:true, variants:["gold","gummy","galaxy"]},
   {slug:"pollo", es:"Espíritu de Pollo", en:"Pollo Sprite", ability:"Al conseguir una eliminación, regenera de a poco tu escudo y el de tus compañeros cercanos.", location:"Sin ubicación confirmada todavía", isNew:true, variants:["gold","gummy","galaxy"]},
   {slug:"bananin", es:"Espíritu de Bananín", en:"Peeky Peely Sprite", ability:"Marca en el mapa a los espíritus raros y enemigos cercanos que los llevan, pero revela tu propia ubicación al usarlo.", location:"Cofres de espíritu (mejor probabilidad en Arboleda Dorada y Cañón Calamar) o eliminando a un rival que lo lleve equipado", isNew:true, variants:["gold","gummy","galaxy"]},
@@ -390,7 +396,7 @@ const SPRITES = [
 ];
 
 let activeFilter = 'all';
-const VARIANT_LABEL = {gold:"Dorado", gummy:"Gomoso", galaxy:"Galaxia", holo:"Holofoil"};
+const VARIANT_LABEL={gold:"Dorado",gummy:"Gomoso",galaxy:"Galaxia",holo:"Holofoil",gem:"Gemma",cubic:"Cúbico"};
 
 const grid = document.getElementById('grid');
 const empty = document.getElementById('empty');
