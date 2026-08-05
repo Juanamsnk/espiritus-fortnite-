@@ -337,10 +337,10 @@
 <header class="hero">
   <span class="eyebrow"><span class="dot"></span>Capítulo 7 · Temporada 3 — Runners</span>
   <h1>Espíritus de Fortnite</h1>
-  <p class="subtitle">Los 24 espíritus (sprites) disponibles esta temporada: habilidad, dónde conseguirlos y sus variantes coleccionables — Dorado, Gomoso, Galaxia, Holofoil, Cúbico, Cuac y Gema. No todos los espíritus tienen las mismas variantes: algunos (como John Wick, Maní Quemado, Vini Jr. y Pollo) no tienen ninguna, y la Gema por ahora solo existe para Llama.</p>
+  <p class="subtitle">Los 25 espíritus (sprites) disponibles esta temporada: habilidad, dónde conseguirlos y sus variantes coleccionables — Dorado, Gomoso, Galaxia, Holofoil, Cúbico, Cuac y Gema. No todos los espíritus tienen las mismas variantes: algunos (como John Wick, Maní Quemado, Vini Jr. y Pollo) no tienen ninguna, y la Gema por ahora solo existe para Llama.</p>
 
   <div class="stats-row">
-    <div class="stat"><div class="n">24</div><div class="l">Espíritus totales</div></div>
+    <div class="stat"><div class="n">25</div><div class="l">Espíritus totales</div></div>
     <div class="stat"><div class="n">8</div><div class="l">Nuevos (DC + evento julio)</div></div>
     <div class="stat"><div class="n">7</div><div class="l">Tipos de variante</div></div>
     <div class="stat"><div class="n mono" id="countdown-n">—</div><div class="l">Días hasta el cierre (19 ago)</div></div>
@@ -352,7 +352,7 @@
       <span class="value value-total" id="progress-total-text">0 / 109 en total</span>
     </div>
     <div class="progress-bar"><div class="progress-bar-fill" id="progress-fill"></div></div>
-    <div class="progress-breakdown" id="progress-text">0 / 24 espíritus · 0 / 85 variantes</div>
+    <div class="progress-breakdown" id="progress-text">0 / 25 espíritus · 0 / 85 variantes</div>
     <div class="variant-progress">
       <div class="vp-item"><span class="vp-dot gold"></span><span id="vp-gold">0/20 Dorado</span></div>
       <div class="vp-item"><span class="vp-dot gummy"></span><span id="vp-gummy">0/20 Gomoso</span></div>
@@ -376,7 +376,7 @@
     <div class="chip" data-filter="checked">Marcados</div>
     <div class="chip" data-filter="unchecked">No marcados</div>
   </div>
-  <div class="count-live" id="count-live">24 espíritus</div>
+  <div class="count-live" id="count-live">25 espíritus</div>
 </div>
 
 <main>
@@ -413,6 +413,7 @@ const SPRITES = [
   {slug:"pollo", es:"Espíritu de Pollo", en:"Pollo Sprite", ability:"Al conseguir una eliminación, regenera de a poco tu escudo y el de tus compañeros cercanos.", location:"Sin ubicación confirmada todavía", isNew:true, variants:[]},
   {slug:"bananin", es:"Espíritu de Bananín", en:"Peely Sprite", ability:"Marca en el mapa a los espíritus raros y enemigos cercanos que los llevan, pero revela tu propia ubicación al usarlo.", location:"Cofres de espíritu (mejor probabilidad en Arboleda Dorada y Cañón Calamar) o eliminando a un rival que lo lleve equipado", isNew:true, variants:["gold","gummy","galaxy","holo"]},
   {slug:"llama", es:"Espíritu de Llama", en:"Lootin' Llama Sprite", ability:"Al abrir cajas de munición tenés una probabilidad de conseguir una mejora de rareza para tu arma.", location:"Cofres de espíritu (sin punto fijo; cae al azar de cualquier contenedor que otorgue espíritus)", isNew:true, variants:["gold","gummy","galaxy","gem"]},
+  {slug:"ironmouse", es:"Espíritu de Ironmouse", en:"Ironmouse Sprite", ability:"Aumenta temporalmente la probabilidad de obtener botín raro durante Ironmouse Hours.", location:"Cofres de espíritu (Ironmouse Hours)", isNew:true, variants:["gold","gummy","galaxy","holo"]},
   {slug:"john-wick", es:"Espíritu de John Wick", en:"John Wick Sprite", ability:"Aumenta tu velocidad de recarga y te da un impulso de daño con armas cortas justo después de conseguir una eliminación.", location:"Cofres de espíritu", isNew:true, variants:[]},
 ];
 
