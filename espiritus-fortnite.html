@@ -132,9 +132,9 @@
   .vp-dot.gummy{background:var(--gummy);}
   .vp-dot.galaxy{background:var(--galaxy);}
   .vp-dot.holo{background:linear-gradient(120deg,var(--holo-1),var(--holo-2),var(--holo-3)); background-size:300% 100%; animation:holoshift 3s linear infinite;}
-  .vp-dot.gem{background:var(--gem);}
-  .vp-dot.cubic{background:var(--cubic);}
-  .vp-dot.quack{background:var(--quack);}
+.vp-dot.gem{background:var(--gem);}
+.vp-dot.cubic{background:var(--cubic);}
+.vp-dot.quack{background:var(--quack);}
   .reset-btn{
     margin-top:14px;
     font-family:'JetBrains Mono',monospace; font-size:11.5px;
@@ -290,12 +290,12 @@
   .v.checked.v-gummy{box-shadow:0 0 10px -2px rgba(123,224,168,.7);}
   .v.checked.v-galaxy{box-shadow:0 0 10px -2px rgba(163,137,244,.7);}
   .v-gem{color:#00394a;background:linear-gradient(135deg,#bdf8ff,var(--gem));}
-  .v-cubic{color:#222;background:linear-gradient(135deg,#f0f0f0,var(--cubic));}
-  .v-quack{color:#233800;background:linear-gradient(135deg,#eaffb0,var(--quack));}
-  .v.checked.v-gem{box-shadow:0 0 10px rgba(99,230,255,.7);}
-  .v.checked.v-cubic{box-shadow:0 0 10px rgba(191,197,210,.7);}
-  .v.checked.v-quack{box-shadow:0 0 10px rgba(198,255,77,.7);}
-  .v.checked.v-holo{animation:holoshift 3s linear infinite; box-shadow:0 0 10px -2px rgba(94,214,255,.7);}
+.v-cubic{color:#222;background:linear-gradient(135deg,#f0f0f0,var(--cubic));}
+.v-quack{color:#233800;background:linear-gradient(135deg,#eaffb0,var(--quack));}
+.v.checked.v-gem{box-shadow:0 0 10px rgba(99,230,255,.7);}
+.v.checked.v-cubic{box-shadow:0 0 10px rgba(191,197,210,.7);}
+.v.checked.v-quack{box-shadow:0 0 10px rgba(198,255,77,.7);}
+.v.checked.v-holo{animation:holoshift 3s linear infinite; box-shadow:0 0 10px -2px rgba(94,214,255,.7);}
   @keyframes holoshift{0%{background-position:0% 0}100%{background-position:300% 0}}
 
   .no-variants{
@@ -337,11 +337,11 @@
 <header class="hero">
   <span class="eyebrow"><span class="dot"></span>Capítulo 7 · Temporada 3 — Runners</span>
   <h1>Espíritus de Fortnite</h1>
-  <p class="subtitle">Los 25 espíritus (sprites) disponibles esta temporada: habilidad, dónde conseguirlos y sus variantes coleccionables — Dorado, Gomoso, Galaxia, Holofoil, Cúbico, Cuac y Gema. No todos los espíritus tienen las mismas variantes: algunos (como John Wick, Maní Quemado, Vini Jr. y Pollo) no tienen ninguna, y la variante Gema está disponible para 9 espíritus (Tierra, Agua, Pato, Demonio, Punto Cero, Aura, Parca, Punk y Llama).</p>
+  <p class="subtitle">Los 25 espíritus (sprites) disponibles esta temporada: habilidad, dónde conseguirlos y sus variantes coleccionables — Dorado, Gomoso, Galaxia, Holofoil, Cúbico, Cuac y Gema. No todos los espíritus tienen las mismas variantes: algunos (como Ironmouse, John Wick, Maní Quemado, Vini Jr. y Pollo) no tienen ninguna. La variante Gema llegó completa el 6 de agosto de 2026 y ya existe para 9 espíritus: Llama, Agua, Tierra, Pato, Demonio, Aura, Punk, Punto Cero y Parca. Cualquier espíritu Gema reduce el daño de caída un 30%.</p>
 
   <div class="stats-row">
     <div class="stat"><div class="n">25</div><div class="l">Espíritus totales</div></div>
-    <div class="stat"><div class="n">8</div><div class="l">Nuevos (DC + evento julio)</div></div>
+    <div class="stat"><div class="n">9</div><div class="l">Nuevos (DC, Llama, Ironmouse...)</div></div>
     <div class="stat"><div class="n">7</div><div class="l">Tipos de variante</div></div>
     <div class="stat"><div class="n mono" id="countdown-n">—</div><div class="l">Días hasta el cierre (19 ago)</div></div>
   </div>
@@ -349,10 +349,10 @@
   <div class="progress-panel">
     <div class="progress-top">
       <span class="label">Tu progreso de colección</span>
-      <span class="value value-total" id="progress-total-text">0 / 118 en total</span>
+      <span class="value value-total" id="progress-total-text">0 / 109 en total</span>
     </div>
     <div class="progress-bar"><div class="progress-bar-fill" id="progress-fill"></div></div>
-    <div class="progress-breakdown" id="progress-text">0 / 25 espíritus · 0 / 93 variantes</div>
+    <div class="progress-breakdown" id="progress-text">0 / 25 espíritus · 0 / 85 variantes</div>
     <div class="variant-progress">
       <div class="vp-item"><span class="vp-dot gold"></span><span id="vp-gold">0/20 Dorado</span></div>
       <div class="vp-item"><span class="vp-dot gummy"></span><span id="vp-gummy">0/20 Gomoso</span></div>
@@ -360,7 +360,7 @@
       <div class="vp-item"><span class="vp-dot holo"></span><span id="vp-holo">0/11 Holofoil</span></div>
       <div class="vp-item"><span class="vp-dot cubic"></span><span id="vp-cubic">0/9 Cúbico</span></div>
       <div class="vp-item"><span class="vp-dot quack"></span><span id="vp-quack">0/4 Cuac</span></div>
-      <div class="vp-item"><span class="vp-dot gem"></span><span id="vp-gem">0/9 Gema</span></div>
+      <div class="vp-item"><span class="vp-dot gem"></span><span id="vp-gem">0/1 Gema</span></div>
     </div>
     <button class="reset-btn" id="reset-btn">↺ Reiniciar checklist</button>
   </div>
@@ -385,27 +385,27 @@
 </main>
 
 <footer>
-  Datos de habilidades, ubicaciones y variantes según el sistema de Espíritus de Fortnite Capítulo 7 Temporada 3 (temporada activa hasta el 19 de agosto de 2026). La disponibilidad de la variante Holofoil y Gema se libera por oleadas, así que puede haber cambiado desde la última actualización de esta página. Fortnite y todos los nombres, diseños e imágenes de espíritus son propiedad de Epic Games — esta página es un listado de referencia hecho por fans, sin afiliación oficial.
+  Datos de habilidades, ubicaciones y variantes según el sistema de Espíritus de Fortnite Capítulo 7 Temporada 3 (temporada activa hasta el 19 de agosto de 2026). Actualizado al 7 de agosto de 2026, tras el lanzamiento completo de la variante Gema (6 de agosto). La disponibilidad de las variantes Holofoil, Cúbico, Cuac y Gema se libera por oleadas semanales, así que puede haber cambiado desde la última actualización de esta página. Fortnite y todos los nombres, diseños e imágenes de espíritus son propiedad de Epic Games — esta página es un listado de referencia hecho por fans, sin afiliación oficial.
 </footer>
 
 <script>
 const SPRITES = [
-  {slug:"tierra", es:"Espíritu de Tierra", en:"Earth Sprite", ability:"Tenés chance de encontrar objetos raros extra al abrir cofres.", location:"Cofres comunes y zonas con muchos árboles", isNew:false, variants:["gold","gummy","galaxy","gem","cubic","quack"]},
+  {slug:"tierra", es:"Espíritu de Tierra", en:"Earth Sprite", ability:"Tenés chance de encontrar objetos raros extra al abrir cofres.", location:"Cofres comunes y zonas con muchos árboles", isNew:false, variants:["gold","gummy","galaxy","cubic","quack","gem"]},
   {slug:"fuego", es:"Espíritu de Fuego", en:"Fire Sprite", ability:"Genera una explosión de fuego cuando le hacés suficiente daño a un enemigo.", location:"Cofres comunes y zonas urbanas", isNew:false, variants:["gold","gummy","galaxy","holo","cubic","quack"]},
-  {slug:"agua", es:"Espíritu de Agua", en:"Water Sprite", ability:"Te recarga el escudo mientras estás en el agua.", location:"Cofres comunes y cerca del agua", isNew:false, variants:["gold","gummy","galaxy","holo","gem","quack"]},
+  {slug:"agua", es:"Espíritu de Agua", en:"Water Sprite", ability:"Te recarga el escudo mientras estás en el agua.", location:"Cofres comunes y cerca del agua", isNew:false, variants:["gold","gummy","galaxy","holo","quack","gem"]},
   {slug:"pato", es:"Espíritu Pato", en:"Duck Sprite", ability:"Recargás escudo al usar un gesto o tocar un instrumento (jam).", location:"Cofres comunes o Cluster Coast", isNew:false, variants:["gold","gummy","galaxy","gem"]},
   {slug:"fantasma", es:"Espíritu Fantasma", en:"Ghost Sprite", ability:"Te da invisibilidad (cloak) después de recargar.", location:"Deambulando por el mapa de noche", isNew:false, variants:["gold","gummy","galaxy","holo"]},
   {slug:"demonio", es:"Espíritu Demonio", en:"Demon Sprite", ability:"Roba vida y escudo cada vez que eliminás a un rival.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","gem"]},
   {slug:"rey", es:"Espíritu Rey", en:"King Sprite", ability:"Aumenta el daño de tu pico.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo"]},
   {slug:"onirico", es:"Espíritu Onírico", en:"Dream Sprite", ability:"Te da un objeto al azar en cada nivel y botín legendario al nivel máximo.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","cubic"]},
-  {slug:"punk", es:"Espíritu Punk", en:"Punk Sprite", ability:"Tiene chance de darte munición infinita al nivel 5.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","gem","cubic"]},
-  {slug:"punto-cero", es:"Espíritu del Punto Cero", en:"Zero Point Sprite", ability:"Crea una Burbuja de Escudo Jr. cuando usás un objeto de curación en vos mismo.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic","quack"]},
+  {slug:"punk", es:"Espíritu Punk", en:"Punk Sprite", ability:"Tiene chance de darte munición infinita al nivel 5.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","cubic","gem"]},
+  {slug:"punto-cero", es:"Espíritu del Punto Cero", en:"Zero Point Sprite", ability:"Crea una Burbuja de Escudo Jr. cuando usás un objeto de curación en vos mismo.", location:"Cofres de espíritu y cofres Relic", isNew:false, variants:["gold","gummy","galaxy","holo","cubic","quack","gem"]},
   {slug:"mani-quemado", es:"Espíritu Maní Quemado", en:"Burnt Peanut Sprite", ability:"Encontrás más botín al eliminar jugadores.", location:"Cofres Relic", isNew:false, variants:[]},
   {slug:"delantero", es:"Espíritu Delantero", en:"Striker Sprite", ability:"Ganás Overdrive (sobremarcha) al trepar o saltar obstáculos.", location:"Metiendo un gol en la cancha de fútbol", isNew:false, variants:["gold","gummy","galaxy","holo"]},
   {slug:"pez", es:"Espíritu Pez", en:"Fishy Sprite", ability:"Aumenta tu velocidad de nado y te da un envión de velocidad al recibir daño.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","cubic"]},
   {slug:"aura", es:"Espíritu Aura", en:"Aura Sprite", ability:"Ganás una carga de Roca Eléctrica (Shock Rock) al hacerle daño a los enemigos.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","gem"]},
   {slug:"jefe", es:"Espíritu Jefe", en:"Boss Sprite", ability:"Aumenta tu HP y escudo máximos.", location:"Chance de aparecer al derrotar a un jefe", isNew:false, variants:["gold","gummy","galaxy","cubic"]},
-  {slug:"parca", es:"Espíritu Parca", en:"Grim Reaper Sprite", ability:"Marca por un rato a los jugadores que te atacan.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo","gem","cubic"]},
+  {slug:"parca", es:"Espíritu Parca", en:"Grim Reaper Sprite", ability:"Marca por un rato a los jugadores que te atacan.", location:"Cofres de espíritu", isNew:false, variants:["gold","gummy","galaxy","holo","cubic","gem"]},
   {slug:"aire", es:"Espíritu de Aire", en:"Air Sprite", ability:"Aumenta la velocidad al esprintar y la altura de salto, y anula el daño de caída.", location:"Sin ubicación confirmada (reportado en zonas altas y montañosas)", isNew:true, variants:["gold","gummy","galaxy","holo"]},
   {slug:"siete", es:"Espíritu de Los Siete", en:"Seven Sprite", ability:"Tu escuadrón ve las huellas que dejan los enemigos al moverse.", location:"Cofres de espíritu", isNew:true, variants:["gold","gummy","galaxy","holo"]},
   {slug:"batman", es:"Espíritu de Batman", en:"Batman Sprite", ability:"Te deja impulsarte al aire y desplegar la Bat Capa.", location:"Cofres de espíritu", isNew:true, variants:["gold","gummy","galaxy","holo","cubic"]},
@@ -413,7 +413,7 @@ const SPRITES = [
   {slug:"pollo", es:"Espíritu de Pollo", en:"Pollo Sprite", ability:"Al conseguir una eliminación, regenera de a poco tu escudo y el de tus compañeros cercanos.", location:"Sin ubicación confirmada todavía", isNew:true, variants:[]},
   {slug:"bananin", es:"Espíritu de Bananín", en:"Peely Sprite", ability:"Marca en el mapa a los espíritus raros y enemigos cercanos que los llevan, pero revela tu propia ubicación al usarlo.", location:"Cofres de espíritu (mejor probabilidad en Arboleda Dorada y Cañón Calamar) o eliminando a un rival que lo lleve equipado", isNew:true, variants:["gold","gummy","galaxy","holo"]},
   {slug:"llama", es:"Espíritu de Llama", en:"Lootin' Llama Sprite", ability:"Al abrir cajas de munición tenés una probabilidad de conseguir una mejora de rareza para tu arma.", location:"Cofres de espíritu (sin punto fijo; cae al azar de cualquier contenedor que otorgue espíritus)", isNew:true, variants:["gold","gummy","galaxy","gem"]},
-  {slug:"ironmouse", es:"Espíritu de Ironmouse", en:"Ironmouse Sprite", ability:"Regenera salud con el tiempo cuando estás bajo de HP. ¡Mientras te curás, obtenés invisibilidad (Cloak) y gravedad baja!", location:"Cofres de espíritu y cofres raros", isNew:true, variants:["gold","gummy","galaxy","holo"]},
+  {slug:"ironmouse", es:"Espíritu de Ironmouse", en:"Ironmouse Sprite", ability:"Cuando tu vida baja, se regenera sola con el tiempo (hasta 100 HP a nivel máximo) y mientras te regenerás obtenés Camuflaje y gravedad reducida.", location:"Cofres de espíritu, cofres Rare y cofres Relic (rareza Mítica, probabilidad muy baja)", isNew:true, variants:[]},
   {slug:"john-wick", es:"Espíritu de John Wick", en:"John Wick Sprite", ability:"Aumenta tu velocidad de recarga y te da un impulso de daño con armas cortas justo después de conseguir una eliminación.", location:"Cofres de espíritu", isNew:true, variants:[]},
 ];
 
